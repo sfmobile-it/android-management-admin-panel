@@ -1,0 +1,29 @@
+@tailwind base;
+
+@layer base {
+    h1 {
+        @apply text-8 my-2;
+    }
+    h2 {
+        @apply text-9;
+    }
+    h3 {
+        @apply text-10;
+    }
+    a {
+        @apply text-blue-600;
+    }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+}
+.btn-blue {
+    @apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+    @apply bg-blue-700;
+}
