@@ -33,35 +33,34 @@ const Enterprises = () => {
                                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                                 Name
                                             </th>
-                                            <th scope="col" className="p-4">
-                                                Actions
-                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         {enterprises.map((e) => (
-                                            <tr key={e.name} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{e.enterpriseDisplayName}</td>
-                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{e.name}</td>
-                                                <td className="py-4 px-6 text-sm font-medium text-center whitespace-nowrap">
-                                                    <Link
-                                                        href={{
-                                                            pathname: "/devices/list/[e]",
-                                                            query: { e: e.name },
-                                                        }}
-                                                    >
-                                                        <a className="text-blue-600 dark:text-blue-500 hover:underline">Devices</a>
-                                                    </Link>
-                                                    <span className="mx-4">|</span>
-                                                    <Link
-                                                        href={{
-                                                            pathname: "/policies/list/[e]",
-                                                            query: { e: e.name },
-                                                        }}
-                                                    >
-                                                        <a className="text-blue-600 dark:text-blue-500 hover:underline">Policies</a>
-                                                    </Link>
+                                            <tr key={e.name}>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                                    {e.enterpriseDisplayName}
+                                                    <div className="mt-6">
+                                                        <Link
+                                                            href={{
+                                                                pathname: "/devices/list/[e]",
+                                                                query: { e: e.name },
+                                                            }}
+                                                        >
+                                                            <a className="text-blue-600 dark:text-blue-500 hover:underline">Devices</a>
+                                                        </Link>
+                                                        <span className="mx-4">|</span>
+                                                        <Link
+                                                            href={{
+                                                                pathname: "/policies/list/[e]",
+                                                                query: { e: e.name },
+                                                            }}
+                                                        >
+                                                            <a className="text-blue-600 dark:text-blue-500 hover:underline">Policies</a>
+                                                        </Link>
+                                                    </div>
                                                 </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{e.name}</td>
                                             </tr>
                                         ))}
                                     </tbody>

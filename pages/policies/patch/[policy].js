@@ -12,10 +12,7 @@ const PolicyPatch = () => {
     const [policy, setPolicy] = useState(null);
 
     const [form, setForm] = useState({
-        name: "",
-        version: "",
-        applications: "",
-        kioskCustomization: "",
+        content: "",
     });
 
     const loadData = async (policyName) => {
@@ -24,13 +21,11 @@ const PolicyPatch = () => {
     };
 
     const update = async () => {
-        const newPolicy = { ...policy, ...form };
-        newPolicy.applications = JSON.parse(form.applications);
-        newPolicy.kioskCustomization = JSON.parse(form.kioskCustomization);
-
+        const newPolicy = { ...policy, ...JSON.parse(form.content) };
+        console.log('newPolicy', newPolicy);
         const data = await PoliciesService.patch(newPolicy);
         
-        router.push('/enterprises')
+        router.push('/enterprises');
     };
 
     const updateForm = async (newForm) => {
@@ -39,10 +34,7 @@ const PolicyPatch = () => {
 
     useEffect(() => {
         setForm({
-            name: policy?.name ?? "",
-            version: policy?.version ?? "",
-            applications: policy ? JSON.stringify(policy.applications) : "",
-            kioskCustomization: policy ? JSON.stringify(policy.kioskCustomization) : "",
+            content: policy ? JSON.stringify(policy, null, 4) : "",
 
         });
     }, [policy]);
@@ -62,43 +54,19 @@ const PolicyPatch = () => {
                     <Toolbar />
 
                     <h1>Policy</h1>
-                    <div className="mt-4">
-                        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div className="mt-2">
+                        <div className="bg-white shadow-md rounded px-8 pt-2 pb-8 mb-4">
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                    Name
-                                </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled id="username" type="text" placeholder="Name" value={form?.name} />
                                 <label className="block text-gray-700 text-sm font-bold mb-2 mt-8" htmlFor="username">
-                                    Version
-                                </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled id="username" type="text" placeholder="Name" value={form?.version} />
-                                <label className="block text-gray-700 text-sm font-bold mb-2 mt-8" htmlFor="username">
-                                    Applications
+                                    Content
                                 </label>
                                 <textarea
-                                    rows={10}
+                                    rows={40}
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="username"
                                     type="text"
-                                    placeholder="Name"
-                                    value={form?.applications}
+                                    value={form?.content}
                                     onChange={(ev) => {
-                                        updateForm({ applications: ev.target.value });
-                                    }}
-                                />
-                                <label className="block text-gray-700 text-sm font-bold mb-2 mt-8" htmlFor="username">
-                                    Kiosk Customization
-                                </label>
-                                <textarea
-                                    rows={10}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="username"
-                                    type="text"
-                                    placeholder="Name"
-                                    value={form?.kioskCustomization}
-                                    onChange={(ev) => {
-                                        updateForm({ kioskCustomization: ev.target.value });
+                                        updateForm({ content: ev.target.value });
                                     }}
                                 />
                                 <button className="btn btn-blue mt-6" onClick={() => update()}>

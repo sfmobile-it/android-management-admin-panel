@@ -1,15 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Footer from "../components/footer";
-import Header from "../components/header";
 import Layout from "../layouts/Layout";
-// import styles from "../styles/Home.module.css";
+import Toolbar from "../components/Toolbar";
 
-export default function Home() {
+const Index = () => {
+
     return (
         <Layout>
-            <Link href={"enterprises"}>Enterprises</Link>
+            <div className="mx-auto">
+                <div className="mx-10 flex flex-col">
+                    <Toolbar />
+                </div>
+            </div>
         </Layout>
     );
-}
+};
+
+export default Index;

@@ -26,8 +26,7 @@ const Devices = () => {
     }, [router.query]);
 
     const deleteDevice = async (device) => {
-        if(window.confirm('Sure to delete the device?'))
-        {
+        if (window.confirm("Sure to delete the device?")) {
             await DevicesService.delete(device.name);
 
             loadData();
@@ -38,7 +37,18 @@ const Devices = () => {
         {
             label: "name",
             value: (record) => {
-                return record.name;
+                return (
+                    <>
+                        <div>
+                            {record.name}
+                            <div className="mt-6">
+                                <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline" onClick={() => deleteDevice(record)}>
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </>
+                );
             },
         },
         {
@@ -65,7 +75,6 @@ const Devices = () => {
         <Layout>
             <div className="mx-auto">
                 <div className="mx-10 flex flex-col">
-
                     <Toolbar />
 
                     <h1>Devices</h1>
@@ -80,25 +89,16 @@ const Devices = () => {
                                                     {c.label}
                                                 </th>
                                             ))}
-
-                                            <th scope="col" className="p-4">
-                                                Actions
-                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         {devices.map((d) => (
-                                            <tr key={d.name} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <tr key={d.name}>
                                                 {columns.map((c) => (
                                                     <td key={`${d.name}_${c.label}`} className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                         {c.value(d)}
                                                     </td>
                                                 ))}
-                                                <td className="py-4 px-6 text-sm font-medium text-center whitespace-nowrap">
-                                                    <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline" onClick={() => deleteDevice(d)}>
-                                                        Delete
-                                                    </a>
-                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -68,31 +68,40 @@ const Devices = () => {
                                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                                 Kiosk Customization
                                             </th>
-                                            <th scope="col" className="p-4">
-                                                Actions
+                                            <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                Other configs
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                         {policies.map((p) => (
-                                            <tr key={p.name} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{p.name}</td>
+                                            <tr key={p.name}>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                                    {p.name}
+                                                    <div className="mt-6">
+                                                        <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline" onClick={() => enrollmentToken(p)}>
+                                                            Enrollment Token
+                                                        </a>
+                                                        <span className="mx-4">|</span>
+                                                        <Link
+                                                            href={{
+                                                                pathname: "/policies/patch/[policy]",
+                                                                query: { policy: p.name },
+                                                            }}
+                                                        >
+                                                            <a className="text-blue-600 dark:text-blue-500 hover:underline">Update</a>
+                                                        </Link>
+                                                    </div>
+                                                </td>
                                                 <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{p.version}</td>
-                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{JSON.stringify(p.applications)}</td>
-                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{JSON.stringify(p.kioskCustomization)}</td>
-                                                <td className="py-4 px-6 text-sm font-medium text-center whitespace-nowrap">
-                                                    <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline" onClick={() => enrollmentToken(p)}>
-                                                        Enrollment Token
-                                                    </a>
-                                                    <span className="mx-4">|</span>
-                                                    <Link
-                                                        href={{
-                                                            pathname: "/policies/patch/[policy]",
-                                                            query: { policy: p.name },
-                                                        }}
-                                                    >
-                                                        <a className="text-blue-600 dark:text-blue-500 hover:underline">Update</a>
-                                                    </Link>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <pre dangerouslySetInnerHTML={{ __html: JSON.stringify(p.applications, null, 4) }} />
+                                                </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <pre dangerouslySetInnerHTML={{ __html: JSON.stringify(p.kioskCustomization, null, 4) }} />
+                                                </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <pre dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...p, ...{ applications: undefined, kioskCustomization: undefined, name: undefined, version: undefined } }, null, 4) }} />
                                                 </td>
                                             </tr>
                                         ))}
