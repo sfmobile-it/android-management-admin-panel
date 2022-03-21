@@ -1,9 +1,7 @@
 class BaseService {
     async getAccessToken() {
 
-        const host = window.location.protocol + "//" + window.location.host;
-
-        const res = await fetch(`${host}/api/gat`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/api/gat`);
         const resJson = await res.json();
         return resJson.access_token;
     }

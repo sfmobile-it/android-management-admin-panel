@@ -34,4 +34,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-config/googleServiceAccount.json
+config/google-service-account.json

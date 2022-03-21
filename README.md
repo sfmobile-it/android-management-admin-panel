@@ -12,7 +12,7 @@ So I decided to write this simple backoffice admin, developed with Next.js.
 
 1) Create a service account (skip this if you have one): https://developers.google.com/android/management/service-account
 2) Clone the repository
-3) Copy your service account json file to `config/googleServiceAccount.json`
+3) Copy your service account json file to `config/google-service-account.json`
 4) Launch `npm install`
 5) Start the server!
 

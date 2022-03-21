@@ -2,7 +2,7 @@ const { google } = require("googleapis");
 
 async function getToken() {
     const authInfo = new google.auth.JWT({
-        keyFile: "config/googleServiceAccount.json",
+        keyFile: "config/google-service-account.json",
         scopes: ["https://www.googleapis.com/auth/androidmanagement"],
     });
 
