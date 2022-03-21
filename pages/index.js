@@ -1,5 +1,5 @@
-import Layout from "../layouts/Layout";
-import Toolbar from "../components/Toolbar";
+import Layout from "../layouts/layout";
+import Toolbar from "../components/toolbar";
 
 const Index = () => {
 

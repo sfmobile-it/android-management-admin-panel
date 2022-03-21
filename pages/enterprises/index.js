@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Layout from "../../layouts/Layout";
-import EnterprisesService from "../../services/EnterprisesService";
+import Layout from "../../layouts/layout";
+import EnterprisesService from "../../services/enterprises-service";
 // import styles from "../../styles/Home.module.css";
 
 const Enterprises = () => {

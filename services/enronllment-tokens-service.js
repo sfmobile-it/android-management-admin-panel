@@ -1,5 +1,5 @@
 import { Constants } from "../utils/constants";
-import BaseService from "./BaseService";
+import BaseService from "./base-service";
 
 class EnronllmentTokensService extends BaseService {
     async create(enterprise, policyName, additionalData, oneTimeOnly=true) {

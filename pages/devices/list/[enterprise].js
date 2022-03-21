@@ -1,11 +1,8 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import DevicesService from "../../../services/DevicesService";
+import DevicesService from "../../../services/devices-service";
 import { useRouter } from "next/router";
-import Layout from "../../../layouts/Layout";
-import Toolbar from "../../../components/Toolbar";
+import Layout from "../../../layouts/layout";
+import Toolbar from "../../../components/toolbar";
 
 const Devices = () => {
     const router = useRouter();

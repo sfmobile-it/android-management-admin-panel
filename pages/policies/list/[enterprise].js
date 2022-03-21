@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Layout from "../../../layouts/Layout";
-import PoliciesService from "../../../services/PoliciesService";
-import Toolbar from "../../../components/Toolbar";
-import EnronllmentTokensService from "../../../services/EnronllmentTokensService";
+import Layout from "../../../layouts/layout";
+import PoliciesService from "../../../services/policies-service";
+import Toolbar from "../../../components/toolbar";
+import EnronllmentTokensService from "../../../services/enronllment-tokens-service";
 
 const Devices = () => {
     const router = useRouter();
