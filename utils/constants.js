@@ -5,7 +5,7 @@ const Urls = {
         list: (projectId) => `${AndroidManagementApiUrlBase}enterprises?projectId=${projectId}`,
     },
     devices: {
-        list: (enterprise) => `${AndroidManagementApiUrlBase}${enterprise}/devices`,
+        list: (enterprise) => `${AndroidManagementApiUrlBase}${enterprise}/devices?pageSize=9999`,
         delete: (deviceName) => `${AndroidManagementApiUrlBase}${deviceName}`,
     },
     policies: {
